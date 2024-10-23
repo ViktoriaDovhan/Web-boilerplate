@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Teachinder</title>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <h1>Teachinder</h1>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Name, note or age to search">
+            <button id="search-button">Search</button>
+        </div>
+    </header>
+
+
+
+    <nav>
+        <ul>
+            <li><a href="#top-teachers">Teachers</a></li>
+            <li><a href="#statistics">Statistics</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+            <li><a href="#footer">About</a></li>
+        </ul>
+        <button class="add-teacher-btn">Add teacher</button>
+    </nav>
+
+    <section id="top-teachers" class="top-teachers">
+        <h2>Top Teachers</h2>
+        <div class="filters">
+            <div class="filter">
+                <label>Age</label>
+                <select name="age">
+                    <option value="">All ages</option>
+                    <option value="18-25">18-25</option>
+                    <option value="26-35">26-35</option>
+                    <option value="36-45">36-45</option>
+                    <option value="46-90">46-90</option>
+                </select>
+            </div>
+            <div class="separator"></div>
+            <div class="filter">
+                <label>Country</label>
+                <select name="country">
+                    <option value="">All</option>
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Norway">Norway</option>
+                    <option value="France">France</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Germany">Germany</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Netherlands">Netherlands</option>
+                </select>
+            </div>
+            <div class="separator"></div>
+            <div class="filter">
+                <label>Gender</label>
+                <select name="gender">
+                    <option value="">Any</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="separator"></div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="favorites-checkbox">
+                <label>Only favorites</label>
+            </div>
+        </div>
+        <section id="teachers-section">
+            <div id="teachers-container" class="teacher-grid">
+                <!-- Тут будуть викладачі -->
+            </div>
+        </section>
+
+    </section>
+
+    <section id="statistics" class="statistics">
+        <h2>Statistics</h2>
+        <div id="statistics-container"></div> <!-- Контейнер для таблиці статистики -->
+        <div class="pagination"></div> <!-- Контейнер для пагінації -->
+    </section>
+
+    <section id="favorites" class="favorites">
+        <h2>Favorites</h2>
+        <div class="favorites-carousel-wrapper">
+            <div class="arrow left">&lt;</div>
+            <div class="favorites-carousel">
+                <section id="favorites-section">
+                    <div id="favorites-container" class="teacher-grid">
+                        <!-- Тут будуть вибрані викладачі -->
+                    </div>
+                </section>
+            </div>
+            <div class="arrow right">&gt;</div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <div id="footer" class="footer-nav">
+            <ul>
+                <li><a href="#top-teachers">Teachers</a></li>
+                <li><a href="#statistics">Statistics</a></li>
+                <li><a href="#favorites">Favorites</a></li>
+                <li><a href="#footer">About</a></li>
+            </ul>
+            <button class="add-teacher-btn">Add teacher</button>
+        </div>
+    </footer>
+</div>
+<div id="teacher-modal" class="modal">
+    <div id="modal-content" class="modal-content">
+        <div class="modal-header">
+            <h3 id="teacher-info-title">Teacher Info</h3>
+            <button id="close-modal" class="close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="teacher-photo">
+                <img src="" alt="Teacher Photo" id="teacher-photo">
+            </div>
+            <div class="teacher-info">
+                <div class="teacher-header">
+                    <h3 id="teacher-name"></h3>
+                    <button id="favorite-star" class="favorite-btn">&#9734;</button> <!-- Зірочка для улюблених викладачів -->
+                </div>
+                <p id="teacher-subject" class="subject"></p>
+                <p id="teacher-location" class="location"></p>
+                <p>Email: <a href="" id="teacher-email"></a></p>
+                <p>Phone: <span id="teacher-phone"></span></p>
+                <p class="additional-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a href="#" id="toggle-map" class="toggle-map">Toggle Map</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="add-teacher-window" id="add-teacher-popup" style="display: none;">
+    <div id="error-messages"></div>
+    <div class="add-teacher-header">
+        <span class="header-title">Add Teacher</span>
+        <span class="add-teacher-close-button" onclick="closeWindow()">×</span>
+    </div>
+    <div class="add-teacher-body">
+        <form id="add-teacher-form" class="add-teacher-form">
+            <div class="add-teacher-inputs">
+                <div class="input-group">
+                    <label for="teacher-name">Name</label>
+                    <input type="text" id="teacher-name-add" class="add-teacher-input" placeholder="Enter name" required>
+                </div>
+                <div class="input-group">
+                    <label for="subject">Speciality</label>
+                    <select id="subject" class="add-teacher-input" required>
+                        <!-- Тут будуть опції предметів -->
+                    </select>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" class="add-teacher-input" placeholder="Enter country" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="add-teacher-input" placeholder="Enter city" required>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="add-teacher-input" placeholder="Enter email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="add-teacher-input" placeholder="Enter phone number" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="date" id="birthdate" class="add-teacher-input" required>
+                </div>
+                <div class="input-group">
+                    <label>Gender</label>
+                    <div class="gender-options">
+                        <label>
+                            <input type="radio" name="gender" value="Male" required> Male
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" value="Female" required> Female
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="bg-color">Background Color</label>
+                    <input type="color" id="bg-color" class="add-teacher-input" title="Background Color">
+                </div>
+                <div class="input-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" class="add-teacher-input" placeholder="Enter notes"></textarea>
+                </div>
+                <button type="submit" class="add-teacher-button">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
